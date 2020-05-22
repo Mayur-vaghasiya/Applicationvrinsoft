@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">ApplicationMayur</string>
+    <string name="no_internet">Check Your Internet Connection.!!</string>
+    <string name="itemname">Enter name</string>
+    <string name="itempreice">Enter Price</string>
+    <string name="save">Save</string>
+    <string name="mayurpractical">Mayur Practical</string>
+    <string name="productlist">Product Listing</string>
+    <string name="addproduct">Add Product</string>
+    <string name="spinner_title">Select Category</string>
+    <string name="category">category</string>
+    <string name="price">Price</string>
+    <string name="name">Name</string>
+
+</resources>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    tools:context=".ui.MainActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_width_48"
+            android:layout_marginBottom="@dimen/height_width_100"
+            android:text="@string/addproduct"
+            android:gravity="center"
+            android:textSize="@dimen/height_width_30"
+            android:textColor="@color/logbtnbg"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edittextName"
+            style="@style/CommonEditTextStyle"
+            android:hint="@string/itemname"
+            android:imeOptions="actionNext"
+            android:inputType="textEmailAddress" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/edittextPrice"
+            style="@style/CommonEditTextStyle"
+            android:layout_marginTop="@dimen/padding_margin_15"
+            android:hint="@string/itempreice"
+            android:imeOptions="actionDone"
+            android:inputType="textEmailAddress" />
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/acspinerCategory"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_width_50"
+            android:layout_marginStart="@dimen/padding_margin_35"
+            android:layout_marginEnd="@dimen/padding_margin_35"
+            android:layout_marginTop="@dimen/padding_margin_15"
+            android:prompt="@string/spinner_title"
+            />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textviewSave"
+            style="@style/CommonSignupButtonStyle"
+            android:layout_marginTop="@dimen/padding_margin_50"
+            android:text="@string/save" />
+    </LinearLayout>
+</LinearLayout>

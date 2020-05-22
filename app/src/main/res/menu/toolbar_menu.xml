@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/shortmenu"
+        android:icon="@drawable/ic_shortmenu"
+        android:title="menu"
+        android:visible="true"
+        app:showAsAction="always" >
+
+
+        <menu>
+            <item
+                android:id="@+id/name"
+                android:title="By Name A to Z"
+                />
+            <item
+                android:id="@+id/prices"
+                android:title="By Price low to high" />
+
+            <item
+                android:id="@+id/category"
+                android:title="By Category" />
+        </menu>
+    </item>
+
+</menu>
