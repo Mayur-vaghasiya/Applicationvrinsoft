@@ -13,7 +13,6 @@ import com.example.applicationvrinsoft.R;
 import com.example.applicationvrinsoft.model.ProductMast;
 
 import java.lang.ref.WeakReference;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Comparator;
 
@@ -50,19 +49,23 @@ public class ProductItemAdapter extends RecyclerView.Adapter<ProductItemAdapter.
 
     }
 
+    private boolean hasDate(int position){
+        if (position == 0)
+            return true;
+        return !productMastsList.get(position).getCategory().equals(productMastsList.get(position-1).getCategory());
+    }
+
     @Override
     public void onBindViewHolder(CustomViewHolder holder, int position) {
         ProductMast productMast = productMastsList.get(position);
 
         if (type == CATEGORY) {
-
-            holder.actvCategory.setVisibility(View.VISIBLE);
-            holder.actvCategory.setText("Category :".concat(productMast.getCategory()).trim());
-
+            holder.actvCategory.setVisibility(hasDate(position) ? View.VISIBLE : View.GONE);
             holder.actvName.setText("Name :".concat(productMast.getName()).trim());
             holder.actvPrice.setText("Price :".concat(productMast.getPrice()).trim());
+            holder.actvCategory.setText("Category :".concat(productMast.getCategory()).trim());
         } else {
-            holder.actvCategory.setVisibility(View.VISIBLE);
+
             holder.actvName.setText("Name :".concat(productMast.getName()).trim());
             holder.actvPrice.setText("Price :".concat(productMast.getPrice()).trim());
             holder.actvCategory.setText("Category :".concat(productMast.getCategory()).trim());
@@ -78,6 +81,7 @@ public class ProductItemAdapter extends RecyclerView.Adapter<ProductItemAdapter.
         this.type = type;
         notifyDataSetChanged();
     }
+
 
     @Override
     public int getItemViewType(int position) {
@@ -142,4 +146,5 @@ public class ProductItemAdapter extends RecyclerView.Adapter<ProductItemAdapter.
             actvCategory = (AppCompatTextView) view.findViewById(R.id.actv_category);
         }
     }
+
 }

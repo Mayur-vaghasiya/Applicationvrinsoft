@@ -12,6 +12,7 @@ import android.content.Intent;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -24,6 +25,8 @@ import com.example.applicationvrinsoft.model.ProductMast;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Main2Activity extends AppCompatActivity {
     private LinearLayoutManager layoutManager = null;
@@ -32,10 +35,11 @@ public class Main2Activity extends AppCompatActivity {
     private ProductItemAdapter productItemAdapter = null;
     private ArrayList<ProductMast> productMastsList = null;
     private Toolbar toolbar;
-   private boolean name, price, category;
+    private boolean name, price, category;
     final int CATEGORY = 0;
     final int NORMAL = 1;
     int type;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,6 +66,7 @@ public class Main2Activity extends AppCompatActivity {
         AppCompatTextView txtHeaderNname = (AppCompatTextView) toolbar.findViewById(R.id.actv_header_name);
         txtHeaderNname.setText(getString(R.string.productlist));
 
+
         layoutManager = new LinearLayoutManager(activity, layoutManager.VERTICAL, false);
         rvItemList.setLayoutManager(layoutManager);
         setRecyclerViewData(NORMAL);
@@ -79,10 +84,26 @@ public class Main2Activity extends AppCompatActivity {
         Bundle args = intent.getBundleExtra("BUNDLE");
         productMastsList = (ArrayList<ProductMast>) args.getSerializable("ARRAYLIST");
         setRecyclerViewData(NORMAL);
+
+
+        Map<String, ArrayList<ProductMast>> productmastByCategory = new HashMap<>();
+
+        for (ProductMast p : productMastsList) {
+            if (!productmastByCategory.containsKey(p.getCategory())) {
+                productmastByCategory.put(p.getCategory(), new ArrayList<>());
+            }
+            productmastByCategory.get(p.getCategory()).add(p);
+        }
+
+        System.out.println("Person grouped by cities : " + productmastByCategory);
+
+        /*Java * or Latter*/
+        /* productmastByCategory =  productMastsList.stream()
+                .collect(Collectors.groupingBy(ProductMast::getCategory));*/
     }
 
     private void setRecyclerViewData(int TYPE) {
-        productItemAdapter = new ProductItemAdapter(new WeakReference<Context>(activity), productMastsList,TYPE);
+        productItemAdapter = new ProductItemAdapter(new WeakReference<Context>(activity), productMastsList, TYPE);
         rvItemList.setAdapter(productItemAdapter);
     }
 
@@ -92,6 +113,7 @@ public class Main2Activity extends AppCompatActivity {
         inflater.inflate(R.menu.toolbar_menu, menu);
         return true;
     }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
