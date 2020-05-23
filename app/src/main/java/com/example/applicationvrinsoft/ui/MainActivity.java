@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatEditText;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private AppCompatEditText edittextName, edittextPrice;
     private AppCompatTextView textviewSave;
     private AppCompatSpinner acSpinnerCategory;
-    private String categoryitem;
+    private String categoryItem="";
     private ArrayList<ProductMast> productMastsList;
 
 
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (!parent.getItemAtPosition(position).equals("Select Category")) {
-                    categoryitem = parent.getItemAtPosition(position).toString();
+                    categoryItem = parent.getItemAtPosition(position).toString();
                 }
             }
 
@@ -95,14 +96,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
 
-        if (!edittextName.getText().toString().isEmpty() && !edittextPrice.getText().toString().isEmpty() && categoryitem != ("")) {
-            ProductMast productMast = new ProductMast(edittextName.getText().toString().trim(), edittextPrice.getText().toString().trim(), categoryitem);
+        if (!edittextName.getText().toString().isEmpty() && !edittextPrice.getText().toString().isEmpty() && !categoryItem.isEmpty()) {
+            ProductMast productMast = new ProductMast(edittextName.getText().toString().trim(), edittextPrice.getText().toString().trim(), categoryItem);
             productMastsList.add(productMast);
             Intent intent = new Intent(activity, Main2Activity.class);
             Bundle args = new Bundle();
             args.putSerializable("ARRAYLIST", productMastsList);
             intent.putExtra("BUNDLE", args);
             startActivity(intent);
+            Toast.makeText(activity,"Item Added Successfully",Toast.LENGTH_LONG).show();
         }
     }
 }

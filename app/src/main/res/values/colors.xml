@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#FF3232A7</color>
     <color name="colorPrimaryDark">#101068</color>
-    <color name="colorAccent">#ffffff</color>
+    <color name="colorAccent">#0A388F</color>
     <color name="fbbackbutton">#87AFDE</color>
     <color name="background1">#FFE0E1F2</color>
     <color name="toolbarcolor">#252525</color>
