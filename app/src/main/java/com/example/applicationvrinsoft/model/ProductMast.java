@@ -4,10 +4,10 @@ import java.io.Serializable;
 
 public class ProductMast implements Serializable {
     private String name;
-    private String price;
+    private int price;
     private String category;
 
-    public ProductMast(String name, String price, String category) {
+    public ProductMast(String name, int price, String category) {
         this.name=name;
         this.price=price;
         this.category=category;
@@ -20,11 +20,11 @@ public class ProductMast implements Serializable {
         this.name = name;
     }
 
-    public String getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 

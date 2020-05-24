@@ -84,22 +84,6 @@ public class Main2Activity extends AppCompatActivity {
         Bundle args = intent.getBundleExtra("BUNDLE");
         productMastsList = (ArrayList<ProductMast>) args.getSerializable("ARRAYLIST");
         setRecyclerViewData(NORMAL);
-
-
-        Map<String, ArrayList<ProductMast>> productmastByCategory = new HashMap<>();
-
-        for (ProductMast p : productMastsList) {
-            if (!productmastByCategory.containsKey(p.getCategory())) {
-                productmastByCategory.put(p.getCategory(), new ArrayList<>());
-            }
-            productmastByCategory.get(p.getCategory()).add(p);
-        }
-
-        System.out.println("Person grouped by cities : " + productmastByCategory);
-
-        /*Java * or Latter*/
-        /* productmastByCategory =  productMastsList.stream()
-                .collect(Collectors.groupingBy(ProductMast::getCategory));*/
     }
 
     private void setRecyclerViewData(int TYPE) {
@@ -123,42 +107,35 @@ public class Main2Activity extends AppCompatActivity {
             case R.id.name:
 
                 productItemAdapter.changeType(NORMAL);
-                if (!name) {
-                    Collections.sort(productMastsList, new ProductItemAdapter.SortbyName());
-                    productItemAdapter.notifyDataSetChanged();
-                    name = true;
+                // if (!name) {
+                Collections.sort(productMastsList, new ProductItemAdapter.SortbyName());
+                productItemAdapter.notifyDataSetChanged();
+                //name = true;
 
-                } else {
-                   /* Collections.sort(productMastsList, new ProductItemAdapter.disSortbyName());
-                    productItemAdapter.notifyDataSetChanged();*/
+             /*   } else {
+                   Collections.sort(productMastsList, new ProductItemAdapter.disSortbyName());
+                    productItemAdapter.notifyDataSetChanged();
                     name = false;
-                }
+                }*/
 
                 return true;
             case R.id.prices:
                 productItemAdapter.changeType(NORMAL);
-                if (!price) {
-                    Collections.sort(productMastsList, new ProductItemAdapter.SortbyPrice());
-                    productItemAdapter.notifyDataSetChanged();
-                    price = true;
-
-                } else {
-
-                    price = false;
-                }
+                Collections.sort(productMastsList, new ProductItemAdapter.SortbyPrice());
+                productItemAdapter.notifyDataSetChanged();
                 return true;
             case R.id.category:
                 productItemAdapter.changeType(CATEGORY);
-                if (!category) {
-                    Collections.sort(productMastsList, new ProductItemAdapter.SortbyCategory());
-                    productItemAdapter.notifyDataSetChanged();
-                    category = true;
+                // if (!category) {
+                Collections.sort(productMastsList, new ProductItemAdapter.SortbyCategory());
+                productItemAdapter.notifyDataSetChanged();
+                //    category = true;
 
-                } else {
-                   /* Collections.sort(productMastsList, new ProductItemAdapter.disSortbyCategory());
-                    productItemAdapter.notifyDataSetChanged();*/
+              /*  } else {
+                    Collections.sort(productMastsList, new ProductItemAdapter.disSortbyCategory());
+                    productItemAdapter.notifyDataSetChanged();
                     category = false;
-                }
+                }*/
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

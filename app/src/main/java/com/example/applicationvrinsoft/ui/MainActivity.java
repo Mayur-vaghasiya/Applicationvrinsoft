@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         edittextPrice = (AppCompatEditText) findViewById(R.id.edittextPrice);
         textviewSave = (AppCompatTextView) findViewById(R.id.textviewSave);
         textviewSave.setOnClickListener(this);
-        String[] SPINNER_DATA = {"Select Category", "Colthes", "Electronics", "Beauty"};
+        String[] SPINNER_DATA = {"Select Category", "Clothes", "Electronics", "Beauty"};
         acSpinnerCategory = (AppCompatSpinner) findViewById(R.id.acspinerCategory);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(activity, android.R.layout.simple_dropdown_item_1line, SPINNER_DATA);
 
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
         if (!edittextName.getText().toString().isEmpty() && !edittextPrice.getText().toString().isEmpty() && !categoryItem.isEmpty()) {
-            ProductMast productMast = new ProductMast(edittextName.getText().toString().trim(), edittextPrice.getText().toString().trim(), categoryItem);
+            ProductMast productMast = new ProductMast(edittextName.getText().toString().trim(), Integer.parseInt(edittextPrice.getText().toString().trim()), categoryItem);
             productMastsList.add(productMast);
             Intent intent = new Intent(activity, Main2Activity.class);
             Bundle args = new Bundle();
