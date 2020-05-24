@@ -49,10 +49,10 @@ public class ProductItemAdapter extends RecyclerView.Adapter<ProductItemAdapter.
 
     }
 
-    private boolean hasDate(int position){
+    private boolean hasCategory(int position) {
         if (position == 0)
             return true;
-        return !productMastsList.get(position).getCategory().equals(productMastsList.get(position-1).getCategory());
+        return !productMastsList.get(position).getCategory().equals(productMastsList.get(position - 1).getCategory());
     }
 
     @Override
@@ -60,7 +60,7 @@ public class ProductItemAdapter extends RecyclerView.Adapter<ProductItemAdapter.
         ProductMast productMast = productMastsList.get(position);
 
         if (type == CATEGORY) {
-            holder.actvCategory.setVisibility(hasDate(position) ? View.VISIBLE : View.GONE);
+            holder.actvCategory.setVisibility(hasCategory(position) ? View.VISIBLE : View.GONE);
             holder.actvName.setText("Name :".concat(productMast.getName()).trim());
             holder.actvPrice.setText("Price :".concat(String.valueOf(productMast.getPrice())).trim());
             holder.actvCategory.setText("Category :".concat(productMast.getCategory()).trim());
@@ -106,12 +106,10 @@ public class ProductItemAdapter extends RecyclerView.Adapter<ProductItemAdapter.
 
         @Override
         public int compare(ProductMast sp1, ProductMast sp2) {
-            return (sp1.getPrice() < sp2.getPrice() ) ? -1: (sp1.getPrice() > sp2.getPrice()) ? 1:0 ;
+            return (sp1.getPrice() < sp2.getPrice()) ? -1 : (sp1.getPrice() > sp2.getPrice()) ? 1 : 0;
         }
 
     }
-
-
 
     public static class SortbyCategory implements Comparator<ProductMast> {
         // Used for sorting in ascending order of
