@@ -94,10 +94,9 @@ public class ProductItemAdapter extends RecyclerView.Adapter<ProductItemAdapter.
 
     public static class SortbyName implements Comparator<ProductMast> {
         // Used for sorting in ascending order of
-
         @Override
         public int compare(ProductMast a, ProductMast b) {
-            return a.getName().compareTo(b.getName());
+            return (a.getName().toUpperCase()).compareTo(b.getName().toUpperCase());
         }
     }
 
