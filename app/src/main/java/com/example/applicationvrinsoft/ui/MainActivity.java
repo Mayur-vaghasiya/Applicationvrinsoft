@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
 
         if (!edittextName.getText().toString().isEmpty() && !edittextPrice.getText().toString().isEmpty() && !categoryItem.isEmpty()) {
-            ProductMast productMast = new ProductMast(edittextName.getText().toString().trim(), Integer.parseInt(edittextPrice.getText().toString().trim()), categoryItem);
+            ProductMast productMast = new ProductMast(edittextName.getText().toString().trim(), Double.parseDouble(edittextPrice.getText().toString().trim()), categoryItem);
             productMastsList.add(productMast);
             Intent intent = new Intent(activity, Main2Activity.class);
             Bundle args = new Bundle();
